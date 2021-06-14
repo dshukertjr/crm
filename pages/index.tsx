@@ -11,7 +11,7 @@ export default function Home(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout title="Contacts" />
+      <Layout title="Contactsa" />
     </div>
   )
 }
