@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext js,jsx,ts,tsx --fix && tsc --project tsconfig.json --pretty --noEmit"
+    "lint": "tsc --project ./ --pretty --noEmit && eslint . --ext js,jsx,ts,tsx --fix"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.26.1",
@@ -32,7 +32,7 @@
     "typescript": "4.3.2"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": "npm run lint:fix"
+    "**/*.{ts,tsx}": "npm run lint"
   },
   "husky": {
     "hooks": {

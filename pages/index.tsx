@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { ReactElement } from 'react'
+import React, { ReactElement } from 'react'
+import Layout from '../components/layout'
 
 export default function Home(): ReactElement {
   return (
@@ -10,11 +11,7 @@ export default function Home(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1>Contacts</h1>
-      </main>
-
-      <footer>footer</footer>
+      <Layout title="Contacts" />
     </div>
   )
 }
