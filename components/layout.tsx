@@ -10,7 +10,7 @@ const Layout: React.FC<{ title: string }> = ({ children, title }): ReactElement 
   return (
     <div className="bg-gray-200 min-h-screen">
       <div className="flex items-top justify-between">
-        <div className="pt-2 pb-3 space-y-1 bg-indigo-400">
+        <div className="bg-indigo-400">
           <div className="h-8"></div>
           <MenuItem type={MenuItemType.people}></MenuItem>
           <MenuItem type={MenuItemType.organization}></MenuItem>
@@ -22,7 +22,7 @@ const Layout: React.FC<{ title: string }> = ({ children, title }): ReactElement 
             <h1 className="text-2xl mb-4">{title}</h1>
             <div>{children}</div>
           </main>
-          <footer>footer</footer>
+          <footer className="text-center mt-8">Simple CRM</footer>
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ const MenuItem: React.FC<{ type: MenuItemType }> = ({ type }): ReactElement => {
       break
   }
   return (
-    <a href="#" className="text-white px-4 py-2 text-base font-normal bg-indigo-500 flex">
+    <a href="#" className="mb-2 text-white px-4 py-2 text-base font-normal bg-indigo-500 flex">
       {icon}
       <span className="px-4">{label}</span>
     </a>
