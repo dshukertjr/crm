@@ -1,8 +1,21 @@
 import Head from 'next/head'
 import React, { ReactElement } from 'react'
 import Layout from '../components/layout'
+import Table from '../components/table'
 
 export default function Home(): ReactElement {
+  const data = [
+    {
+      Name: 'Cheryl Obrien',
+      Email: 'g.griffin@yahoo.com',
+      Phone: '(775) 252-2843',
+    },
+    {
+      Name: 'Amber Watts',
+      Email: 'diana.carlson@aol.com',
+      Phone: '(174) 460-8335',
+    },
+  ]
   return (
     <div>
       <Head>
@@ -12,22 +25,7 @@ export default function Home(): ReactElement {
       </Head>
 
       <Layout title="People">
-        <table className=" w-full">
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td>Email</td>
-              <td>Phone</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cheryl Obrien</td>
-              <td>g.griffin@yahoo.com</td>
-              <td>(775) 252-2843</td>
-            </tr>
-          </tbody>
-        </table>
+        <Table data={data}></Table>
       </Layout>
     </div>
   )
