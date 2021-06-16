@@ -93,7 +93,10 @@ const MenuItem: React.FC<{ type: MenuItemType }> = ({ type }): ReactElement => {
       break
   }
   return (
-    <a href="#" className="mb-2 text-white px-4 py-2 text-base font-normal bg-indigo-500 flex">
+    <a
+      href="#"
+      className="mb-2 text-white px-4 py-2 text-base font-normal hover:bg-indigo-500 transition-colors flex"
+    >
       {icon}
       <span className="px-4">{label}</span>
     </a>

@@ -12,7 +12,7 @@ export default function Home(): ReactElement {
       </Head>
 
       <Layout title="People">
-        <table>
+        <table className=" w-full">
           <thead>
             <tr>
               <td>Name</td>
@@ -22,7 +22,9 @@ export default function Home(): ReactElement {
           </thead>
           <tbody>
             <tr>
-              <td></td>
+              <td>Cheryl Obrien</td>
+              <td>g.griffin@yahoo.com</td>
+              <td>(775) 252-2843</td>
             </tr>
           </tbody>
         </table>
