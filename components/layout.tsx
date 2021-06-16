@@ -10,7 +10,7 @@ const Layout: React.FC<{ title: string }> = ({ children, title }): ReactElement 
   return (
     <div className="bg-gray-200 min-h-screen">
       <div className="flex items-top justify-between">
-        <div className="bg-indigo-400">
+        <div className="bg-indigo-400 min-h-screen">
           <div className="h-8"></div>
           <MenuItem type={MenuItemType.people}></MenuItem>
           <MenuItem type={MenuItemType.organization}></MenuItem>
@@ -22,7 +22,6 @@ const Layout: React.FC<{ title: string }> = ({ children, title }): ReactElement 
             <h1 className="text-2xl mb-4">{title}</h1>
             <div>{children}</div>
           </main>
-          <footer className="text-center mt-8">Simple CRM</footer>
         </div>
       </div>
     </div>
