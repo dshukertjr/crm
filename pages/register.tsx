@@ -5,11 +5,11 @@ import Link from 'next/link'
 import { Field, Form, Formik, FormikHelpers } from 'formik'
 import { supabase } from '../lib/api'
 
-export default function LoginPage(): ReactElement {
+export default function RegisterPage(): ReactElement {
   return (
     <div>
       <Head>
-        <title>Login | Simple CRM</title>
+        <title>Register | Simple CRM</title>
         <meta name="description" content="Log into your simple CRM" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -23,7 +23,7 @@ export default function LoginPage(): ReactElement {
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Sign in to your account
+              Create an account
             </h2>
           </div>
           <Formik
@@ -36,7 +36,7 @@ export default function LoginPage(): ReactElement {
               { setSubmitting }: FormikHelpers<{ email: string; password: string }>
             ) => {
               try {
-                const res = await supabase.auth.signIn({
+                const res = await supabase.auth.signUp({
                   email: values.email,
                   password: values.password,
                 })
@@ -75,26 +75,18 @@ export default function LoginPage(): ReactElement {
                 </div>
               </div>
 
-              <div className="text-sm">
-                <Link href="/forgot-password">
-                  <a className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Forgot your password?
-                  </a>
-                </Link>
-              </div>
-
               <button
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md transition-colors text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Sign in
+                Register
               </button>
-              <Link href="/register">
+              <Link href="/login">
                 <a
                   type="submit"
                   className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md transition-colors text-indigo-600 hover:bg-indigo-200 border-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Don&apos;t have an account yet?
+                  Already have an account?
                 </a>
               </Link>
             </Form>

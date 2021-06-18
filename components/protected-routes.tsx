@@ -1,12 +1,14 @@
 import { useRouter } from 'next/dist/client/router'
+import { useContext } from 'react'
 import { ReactElement } from 'react'
+import { AuthContext } from '../contexts/auth-context'
 
 const ProtectedRoutes: React.FC = ({ children }): ReactElement => {
-  // const {user} = useAuthContext()
+  const { user } = useContext(AuthContext)
   const router = useRouter()
-  const isAuthenticated = false
+  const isAuthenticated = user !== null
 
-  const unprotectedRoutes = ['/login']
+  const unprotectedRoutes = ['/login', '/register']
   console.log('router', router)
 
   const isPathProtected = unprotectedRoutes.indexOf(router.pathname) === -1

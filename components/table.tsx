@@ -15,7 +15,7 @@ const Table: React.FC<{ data: { [key: string]: string | number }[] }> = ({
       </thead>
       <tbody>
         {data.map((row) => (
-          <tr className="border-b-2 border-indigo-50" key="row">
+          <tr className="border-b-2 border-indigo-50" key={Object.values(row)[0]}>
             {keys.map((key) => (
               <TableData key={row[key]}>{row[key]}</TableData>
             ))}
