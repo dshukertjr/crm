@@ -9,6 +9,8 @@
     "lint": "tsc --project ./ --pretty --noEmit && eslint . --ext js,jsx,ts,tsx --fix"
   },
   "dependencies": {
+    "@headlessui/react": "^1.2.0",
+    "@heroicons/react": "^1.0.1",
     "@supabase/supabase-js": "^1.15.1",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
