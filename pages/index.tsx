@@ -1,22 +1,9 @@
-import { Session } from '@supabase/supabase-js'
 import Head from 'next/head'
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement } from 'react'
 import Layout from '../components/layout'
 import Table from '../components/table'
-import { supabase } from '../lib/api'
 
 export default function Home(): ReactElement {
-  const [session, setSession] = useState<Session | null>(null)
-
-  useEffect(() => {
-    setSession(supabase.auth.session())
-    supabase.auth.onAuthStateChange((_event, session) => setSession(session))
-  }, [])
-
-  if (!session) {
-    return <div>login</div>
-  }
-
   const data = [
     {
       Name: 'Cheryl Obrien',
@@ -38,7 +25,6 @@ export default function Home(): ReactElement {
       </Head>
 
       <Layout title="People">
-        <div className="text-center">Loading...</div>
         <Table data={data}></Table>
       </Layout>
     </div>
