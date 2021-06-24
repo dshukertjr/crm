@@ -2,8 +2,11 @@ import { ReactElement } from 'react'
 
 const Table: React.FC<{
   header: { key: string; label: string }[]
-  data: { [key: string]: string | number }[]
+  data?: { [key: string]: string | number }[]
 }> = ({ data, header }): ReactElement => {
+  if (!data) {
+    return <div>loading</div>
+  }
   const keys = header.map((head) => head.key)
   return (
     <table className="w-full">
