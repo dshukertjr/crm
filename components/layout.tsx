@@ -6,7 +6,11 @@ enum MenuItemType {
   deals,
 }
 
-const Layout: React.FC<{ title: string }> = ({ children, title }): ReactElement => {
+const Layout: React.FC<{ title: string; cta?: ReactElement }> = ({
+  children,
+  title,
+  cta,
+}): ReactElement => {
   return (
     <div className="bg-gray-200 min-h-screen">
       <div className="flex items-top justify-between">
@@ -19,7 +23,10 @@ const Layout: React.FC<{ title: string }> = ({ children, title }): ReactElement 
 
         <div className="flex-grow bg-white-900 overflow-y-scroll max-h-screen p-8">
           <main className="bg-white p-10 rounded-md">
-            <h1 className="text-2xl mb-4">{title}</h1>
+            <div className="flex justify-between items-start">
+              <h1 className="text-2xl mb-4">{title}</h1>
+              {cta}
+            </div>
             <div>{children}</div>
           </main>
         </div>

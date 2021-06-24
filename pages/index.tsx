@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import React, { ReactElement } from 'react'
 import Layout from '../components/layout'
 import Table from '../components/table'
@@ -32,6 +33,11 @@ export default function Home(): ReactElement {
       label: 'Phone',
     },
   ]
+  const cta = (
+    <Link href="/add-person">
+      <a className="bg-indigo-700 text-white font-bold px-4 py-2 rounded">Add</a>
+    </Link>
+  )
   return (
     <div>
       <Head>
@@ -40,7 +46,7 @@ export default function Home(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout title="People">
+      <Layout title="People" cta={cta}>
         <Table header={header} data={data}></Table>
       </Layout>
     </div>
