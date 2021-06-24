@@ -11,7 +11,7 @@ interface FormValue {
   phone?: string
 }
 
-export default function PersonForm(): ReactElement {
+export default function PersonForm({ id }: { id?: string }): ReactElement {
   return (
     <Formik<FormValue>
       initialValues={{
@@ -38,7 +38,11 @@ export default function PersonForm(): ReactElement {
       }}
       onSubmit={async (values: FormValue, { setSubmitting }: FormikHelpers<FormValue>) => {
         setSubmitting(true)
-        const { data, error } = await supabase.from('people').upsert(values)
+        const person: { [key: string]: string } = { ...values }
+        if (id) {
+          person.id = id
+        }
+        const { data, error } = await supabase.from('people').upsert(person)
         console.log(data, error)
         setSubmitting(false)
       }}
@@ -46,10 +50,10 @@ export default function PersonForm(): ReactElement {
       {({ isSubmitting }) => (
         <Form className="mt-8 space-y-4">
           <div className="flex space-x-2">
-            <FormField label="Last Name" name="last_name"></FormField>
             <FormField label="First Name" name="first_name"></FormField>
+            <FormField label="Last Name" name="last_name"></FormField>
           </div>
-          <FormField label="Email" name="email"></FormField>
+          <FormField label="Email" name="email" type="email"></FormField>
           <FormField label="Phone Number" name="phone"></FormField>
 
           <button
