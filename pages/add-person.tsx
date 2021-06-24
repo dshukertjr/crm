@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React, { ReactElement } from 'react'
 import Layout from '../components/layout'
+import PersonForm from '../components/person-form'
 import { SITE_NAME } from '../lib/constants'
 
 export default function CreatePerson(): ReactElement {
@@ -12,7 +13,9 @@ export default function CreatePerson(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout title="Add Person Record"></Layout>
+      <Layout title="Add Person Record">
+        <PersonForm></PersonForm>
+      </Layout>
     </div>
   )
 }
