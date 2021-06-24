@@ -2,30 +2,46 @@ import Head from 'next/head'
 import React, { ReactElement } from 'react'
 import Layout from '../components/layout'
 import Table from '../components/table'
+import { SITE_NAME } from '../lib/constants'
 
 export default function Home(): ReactElement {
   const data = [
     {
-      Name: 'Cheryl Obrien',
-      Email: 'g.griffin@yahoo.com',
-      Phone: '(775) 252-2843',
+      name: 'Cheryl Obrien',
+      email: 'g.griffin@yahoo.com',
+      phone: '(775) 252-2843',
     },
     {
-      Name: 'Amber Watts',
-      Email: 'diana.carlson@aol.com',
-      Phone: '(174) 460-8335',
+      name: 'Amber Watts',
+      email: 'diana.carlson@aol.com',
+      phone: '(174) 460-8335',
+    },
+  ]
+
+  const header = [
+    {
+      key: 'name',
+      label: 'Name',
+    },
+    {
+      key: 'email',
+      label: 'Email',
+    },
+    {
+      key: 'phone',
+      label: 'Phone',
     },
   ]
   return (
     <div>
       <Head>
-        <title>People | Simple CRM</title>
+        <title>People | {SITE_NAME}</title>
         <meta name="description" content="You can see your people here. " />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Layout title="People">
-        <Table data={data}></Table>
+        <Table header={header} data={data}></Table>
       </Layout>
     </div>
   )

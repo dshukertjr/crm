@@ -4,12 +4,13 @@ import { ReactElement } from 'react'
 import Link from 'next/link'
 import { Field, Form, Formik, FormikHelpers } from 'formik'
 import { supabase } from '../lib/api'
+import { SITE_NAME } from '../lib/constants'
 
 export default function RegisterPage(): ReactElement {
   return (
     <div>
       <Head>
-        <title>Register | Simple CRM</title>
+        <title>Register | {SITE_NAME}</title>
         <meta name="description" content="Log into your simple CRM" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
