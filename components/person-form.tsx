@@ -3,6 +3,7 @@ import { ReactElement } from 'react'
 import { Form, Formik, FormikHelpers } from 'formik'
 import { supabase } from '../lib/api'
 import FormField from './form-field'
+import { useRouter } from 'next/dist/client/router'
 
 interface FormValue {
   first_name?: string
@@ -12,6 +13,7 @@ interface FormValue {
 }
 
 export default function PersonForm({ id }: { id?: string }): ReactElement {
+  const router = useRouter()
   return (
     <Formik<FormValue>
       initialValues={{
@@ -44,6 +46,7 @@ export default function PersonForm({ id }: { id?: string }): ReactElement {
         }
         const { data, error } = await supabase.from('people').upsert(person)
         console.log(data, error)
+        router.push('/')
         setSubmitting(false)
       }}
     >
