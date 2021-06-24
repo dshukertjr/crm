@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import Link from 'next/link'
 
 enum MenuItemType {
   people,
@@ -40,9 +41,11 @@ export default Layout
 const MenuItem: React.FC<{ type: MenuItemType }> = ({ type }): ReactElement => {
   let icon
   let label
+  let href = '/'
   switch (type) {
     case MenuItemType.people:
       label = 'People'
+      href = '/'
       icon = (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -62,6 +65,7 @@ const MenuItem: React.FC<{ type: MenuItemType }> = ({ type }): ReactElement => {
       break
     case MenuItemType.organization:
       label = 'Organizations'
+      href = '/organinzations'
       icon = (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +85,7 @@ const MenuItem: React.FC<{ type: MenuItemType }> = ({ type }): ReactElement => {
       break
     case MenuItemType.deals:
       label = 'Deals'
+      href = '/deals'
       icon = (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -100,12 +105,11 @@ const MenuItem: React.FC<{ type: MenuItemType }> = ({ type }): ReactElement => {
       break
   }
   return (
-    <a
-      href="#"
-      className="mb-2 text-white px-4 py-2 text-base font-normal hover:bg-indigo-500 transition-colors flex"
-    >
-      {icon}
-      <span className="px-4">{label}</span>
-    </a>
+    <Link href={href}>
+      <a className="mb-2 text-white px-4 py-2 text-base font-normal hover:bg-indigo-500 transition-colors flex">
+        {icon}
+        <span className="px-4">{label}</span>
+      </a>
+    </Link>
   )
 }
