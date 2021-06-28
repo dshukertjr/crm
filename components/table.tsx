@@ -1,4 +1,5 @@
-import { ReactElement } from 'react'
+import { PencilAltIcon } from '@heroicons/react/outline'
+import React, { ReactElement } from 'react'
 
 const Table: React.FC<{
   header: { key: string; label: string }[]
@@ -23,6 +24,11 @@ const Table: React.FC<{
             {keys.map((key) => (
               <TableData key={row[key]}>{row[key]}</TableData>
             ))}
+            <TableData>
+              <button>
+                <PencilAltIcon></PencilAltIcon>
+              </button>
+            </TableData>
           </tr>
         ))}
       </tbody>

@@ -3,11 +3,24 @@
 
 create table if not exists public.users (
   id uuid references auth.users on delete cascade not null primary key,
-  name varchar(18) not null unique,
+  name varchar(50) not null unique,
   description varchar(320) not null,
   image_url text,
 
   constraint username_validation check (char_length(name) >= 1)
+);
+
+create table if not exists public.groups (
+  id uuid not null primary key default uuid_generate_v4 (),
+  name varchar(50) not null unique,
+  description varchar(320) not null,
+  admin_user_id uuid references public.users on delete cascade not null
+);
+
+create table if not exists public.users_groups (
+  user_id uuid references public.users on delete cascade not null,
+  group_id uuid references public.groups on delete cascade not null,
+  primary key (user_id, group_id)  
 );
 
 create table if not exists public.people (
@@ -15,7 +28,8 @@ create table if not exists public.people (
     first_name varchar(50),
     last_name varchar(50),
     email text,
-    phone text
+    phone text,
+    group_id uuid references public.groups on delete cascade not null
 );
 
 ```

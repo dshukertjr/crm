@@ -1,5 +1,6 @@
-import { ReactElement } from 'react'
+import React, { ReactElement } from 'react'
 import Link from 'next/link'
+import { BriefcaseIcon, OfficeBuildingIcon, UserIcon } from '@heroicons/react/outline'
 
 enum MenuItemType {
   people,
@@ -46,67 +47,22 @@ const MenuItem: React.FC<{ type: MenuItemType }> = ({ type }): ReactElement => {
     case MenuItemType.people:
       label = 'People'
       href = '/'
-      icon = (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-          />
-        </svg>
-      )
+      icon = <UserIcon className="w-6 h-6"></UserIcon>
       break
     case MenuItemType.organization:
       label = 'Organizations'
       href = '/organinzations'
-      icon = (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-          />
-        </svg>
-      )
+      icon = <OfficeBuildingIcon className="w-6 h-6"></OfficeBuildingIcon>
       break
     case MenuItemType.deals:
       label = 'Deals'
       href = '/deals'
-      icon = (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-          />
-        </svg>
-      )
+      icon = <BriefcaseIcon className="w-6 h-6"></BriefcaseIcon>
       break
   }
   return (
     <Link href={href}>
-      <a className="mb-2 text-white px-4 py-2 text-base font-normal hover:bg-indigo-500 transition-colors flex">
+      <a className="mb-2 text-white px-4 py-2 text-base font-normal hover:bg-indigo-500 transition-colors flex items-center">
         {icon}
         <span className="px-4">{label}</span>
       </a>

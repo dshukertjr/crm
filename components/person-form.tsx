@@ -4,6 +4,7 @@ import { Form, Formik, FormikHelpers } from 'formik'
 import { supabase } from '../lib/api'
 import FormField from './form-field'
 import { useRouter } from 'next/dist/client/router'
+import { Person } from '../models/person'
 
 interface FormValue {
   first_name?: string
@@ -12,15 +13,15 @@ interface FormValue {
   phone?: string
 }
 
-export default function PersonForm({ id }: { id?: string }): ReactElement {
+export default function PersonForm({ originalPerson }: { originalPerson?: Person }): ReactElement {
   const router = useRouter()
   return (
     <Formik<FormValue>
       initialValues={{
-        last_name: '',
-        first_name: '',
-        email: '',
-        phone: '',
+        first_name: originalPerson?.first_name ?? '',
+        last_name: originalPerson?.last_name ?? '',
+        email: originalPerson?.email ?? '',
+        phone: originalPerson?.phone ?? '',
       }}
       validate={(values: FormValue) => {
         const errors: FormValue = {}
@@ -41,8 +42,8 @@ export default function PersonForm({ id }: { id?: string }): ReactElement {
       onSubmit={async (values: FormValue, { setSubmitting }: FormikHelpers<FormValue>) => {
         setSubmitting(true)
         const person: { [key: string]: string } = { ...values }
-        if (id) {
-          person.id = id
+        if (originalPerson) {
+          person.id = originalPerson.id
         }
         const { data, error } = await supabase.from('people').upsert(person)
         console.log(data, error)
