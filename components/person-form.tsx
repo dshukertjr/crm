@@ -5,6 +5,7 @@ import { supabase } from '../lib/api'
 import FormField from './form-field'
 import { useRouter } from 'next/dist/client/router'
 import { Person } from '../models/person'
+import { GROUP_ID } from '../lib/constants'
 
 interface FormValue {
   first_name?: string
@@ -15,6 +16,7 @@ interface FormValue {
 
 export default function PersonForm({ originalPerson }: { originalPerson?: Person }): ReactElement {
   const router = useRouter()
+  console.log('originalPerson', originalPerson)
   return (
     <Formik<FormValue>
       initialValues={{
@@ -45,10 +47,13 @@ export default function PersonForm({ originalPerson }: { originalPerson?: Person
         if (originalPerson) {
           person.id = originalPerson.id
         }
+        person.group_id = GROUP_ID
         const { data, error } = await supabase.from('people').upsert(person)
         console.log(data, error)
-        router.push('/')
-        setSubmitting(false)
+        if (!error) {
+          router.push('/')
+          setSubmitting(false)
+        }
       }}
     >
       {({ isSubmitting }) => (

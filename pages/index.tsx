@@ -28,7 +28,10 @@ export default function Home(): ReactElement {
   const [people, setPeople] = useState<Person[]>()
   useEffect(() => {
     const getData = async (): Promise<void> => {
-      const { data, error } = await supabase.from('people').select()
+      const { data, error } = await supabase
+        .from('people')
+        .select()
+        .eq('group_id', '01f83bc1-d0d1-4f1a-b41f-ef89fa8e35d5')
       if (error) {
         console.error('error', error)
         return

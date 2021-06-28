@@ -4,7 +4,7 @@ import Layout from '../components/layout'
 import PersonForm from '../components/person-form'
 import { SITE_NAME } from '../lib/constants'
 
-export default function CreatePerson(): ReactElement {
+export default function AddPerson(): ReactElement {
   return (
     <div>
       <Head>
